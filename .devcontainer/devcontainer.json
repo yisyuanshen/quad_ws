@@ -1,0 +1,26 @@
+{
+    "name": "Robot Dev Environment",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "runArgs": [
+        "--net=host",
+        "--privileged",
+        "--gpus", "all",
+        "--runtime=nvidia"
+    ],
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-python.python",
+                "ms-iot.vscode-ros",
+                "twxs.cmake"
+            ]
+        }
+    },
+
+    "remoteUser": "root"
+}
