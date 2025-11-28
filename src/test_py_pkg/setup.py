@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'test_py'
+package_name = 'test_py_pkg'
 
 setup(
     name=package_name,
@@ -24,7 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'test_exec = test_py.test:main'
+            'talker = test_py_pkg.publisher:main',
+            'listener = test_py_pkg.subscriber:main',
         ],
     },
 )
