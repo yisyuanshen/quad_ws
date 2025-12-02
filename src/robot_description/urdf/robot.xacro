@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="my_quadruped" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="const.xacro"/>
+    <xacro:include filename="leg.xacro"/>
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.4 0.15 0.08"/>
+            </geometry>
+            <material name="gray"><color rgba="0.502 0.502 0.502 1"/></material>
+        </visual>
+    </link>
+
+    <xacro:leg name="lf" pos_x="${hip_offset_x}" pos_y="${hip_offset_y}" mirror="1" />
+    <xacro:leg name="rf" pos_x="${hip_offset_x}" pos_y="${-hip_offset_y}" mirror="-1" />
+    <xacro:leg name="lh" pos_x="${-hip_offset_x}" pos_y="${hip_offset_y}" mirror="1" />
+    <xacro:leg name="rh" pos_x="${-hip_offset_x}" pos_y="${-hip_offset_y}" mirror="-1" />
+
+</robot>

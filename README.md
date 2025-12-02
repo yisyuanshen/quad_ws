@@ -54,5 +54,15 @@ source install/setup.bash
 ***Useful Commands and Urls***
 ```
 docker system prune -a
+
+cd src
+git clone --recursive https://github.com/chvmp/champ -b ros2
+git clone https://github.com/chvmp/champ_teleop -b ros2
+cd ..
+rosdep install --from-paths src --ignore-src -r -y
+
+xacro src/robot_description/urdf/robot.xacro > src/robot_description/urdf/robot.urdf
+
+
 ```
 https://github.com/chvmp/champ/tree/ros2

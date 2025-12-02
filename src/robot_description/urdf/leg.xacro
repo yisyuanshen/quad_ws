@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="leg" params="name pos_x pos_y mirror">
+
+        <joint name="${name}_abad_joint" type="revolute">
+            <origin xyz="${pos_x} ${pos_y} 0" rpy="0 0 0"/>
+            <parent link="base_link"/>
+            <child link="${name}_hip_base_link"/>
+            <axis xyz="1 0 0"/>
+            <limit lower="-0.7" upper="0.7" effort="10.0" velocity="10.0"/>
+        </joint>
+
+        <link name="${name}_hip_base_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.08 0.04 0.06"/>
+                </geometry>
+                <material name="white"><color rgba="1 1 1 1"/></material>
+            </visual>
+        </link>
+
+
+        <joint name="${name}_motor_l_joint" type="revolute">
+            <origin xyz="${-mirror * motor_spacing/2} 0 0" rpy="0 0 0"/>
+            <parent link="${name}_hip_base_link"/>
+            <child link="${name}_upper_l_link"/>
+            <axis xyz="0 1 0"/>
+            <limit lower="-3.14" upper="3.14" effort="10.0" velocity="10.0"/>
+        </joint>
+
+        <link name="${name}_upper_l_link">
+            <visual>
+                <origin xyz="0 0 ${-upper_link_length/2}" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.02 0.01 ${upper_link_length}"/>
+                </geometry>
+                <material name="red"><color rgba="1.0 0.8 0.796 1"/></material>
+            </visual>
+        </link>
+
+        <joint name="${name}_knee_l_joint" type="revolute">
+            <origin xyz="0 0 ${-upper_link_length}" rpy="0 0 0"/>
+            <parent link="${name}_upper_l_link"/>
+            <child link="${name}_lower_l_link"/>
+            <axis xyz="0 1 0"/>
+            <limit lower="-3.14" upper="3.14" effort="10.0" velocity="10.0"/>
+        </joint>
+
+        <link name="${name}_lower_l_link">
+            <visual>
+                <origin xyz="0 0 ${-lower_link_length/2}" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.015 0.008 ${lower_link_length}"/>
+                </geometry>
+                <material name="blue"><color rgba="0.678 0.847 0.902 1"/></material>
+            </visual>
+        </link>
+
+
+        <joint name="${name}_motor_r_joint" type="revolute">
+            <origin xyz="${mirror * motor_spacing/2} 0 0" rpy="0 0 0"/>
+            <parent link="${name}_hip_base_link"/>
+            <child link="${name}_upper_r_link"/>
+            <axis xyz="0 1 0"/>
+            <limit lower="-3.14" upper="3.14" effort="10.0" velocity="10.0"/>
+        </joint>
+
+        <link name="${name}_upper_r_link">
+            <visual>
+                <origin xyz="0 0 ${-upper_link_length/2}" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.02 0.01 ${upper_link_length}"/>
+                </geometry>
+                <material name="green"><color rgba="0.565 0.933 0.565 1"/></material>
+            </visual>
+        </link>
+
+        <joint name="${name}_knee_r_joint" type="revolute">
+            <origin xyz="0 0 ${-upper_link_length}" rpy="0 0 0"/>
+            <parent link="${name}_upper_r_link"/>
+            <child link="${name}_lower_r_link"/>
+            <axis xyz="0 1 0"/>
+            <limit lower="-3.14" upper="3.14" effort="10.0" velocity="10.0"/>
+        </joint>
+
+        <link name="${name}_lower_r_link">
+            <visual>
+                <origin xyz="0 0 ${-lower_link_length/2}" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.015 0.008 ${lower_link_length}"/>
+                </geometry>
+                <material name="yellow"><color rgba="1 1 0 1"/></material>
+            </visual>
+        </link>
+
+        <joint name="${name}_foot_joint" type="fixed">
+            <origin xyz="0 0 ${-lower_link_length}" rpy="0 0 0"/>
+            <parent link="${name}_lower_l_link"/>
+            <child link="${name}_foot_link"/>
+        </joint>
+
+        <link name="${name}_foot_link">
+             <visual>
+                <geometry>
+                    <sphere radius="0.02"/>
+                </geometry>
+                <material name="purple"><color rgba="0.502 0.0 0.502 1"/></material>
+            </visual>
+        </link>
+
+    </xacro:macro>
+</robot>
