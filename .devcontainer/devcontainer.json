@@ -3,14 +3,14 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-
     "runArgs": [
+        "--gpus", "all",
+        "--runtime=nvidia",
         "--net=host",
         "--privileged",
-        "--gpus", "all",
-        "--runtime=nvidia"
+        "-e", "DISPLAY=${localEnv:DISPLAY}", 
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix"
     ],
-
     "customizations": {
         "vscode": {
             "extensions": [
@@ -21,6 +21,8 @@
             ]
         }
     },
+
+    "postCreateCommand": "sudo apt-get update && rosdep update && rosdep install --from-paths src --ignore-src -y",
 
     "remoteUser": "root"
 }

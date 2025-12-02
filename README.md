@@ -50,3 +50,9 @@ colcon build --symlink-install
 # Source the environment
 source install/setup.bash
 ```
+
+***Useful Commands and Urls***
+```
+docker system prune -a
+```
+https://github.com/chvmp/champ/tree/ros2
