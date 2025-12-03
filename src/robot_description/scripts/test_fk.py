@@ -102,7 +102,6 @@ class FKNode(Node):
         # ==========================================
         # 5. 分配數據到四條腿 (Mapping)
         # ==========================================
-        # 根據您驗證的結果：
         # - 左側腿 (LF, LH) 的 L Joint 接 theta_front, R Joint 接 theta_back
         # - 右側腿 (RF, RH) 的 L Joint 接 theta_back,  R Joint 接 theta_front
         
