@@ -4,8 +4,9 @@
         "dockerfile": "Dockerfile"
     },
     "runArgs": [
-        "--gpus", "all",
-        "--runtime=nvidia",
+        // Comment gpu and nvidia arg under arm64 environment
+        // "--gpus", "all",
+        // "--runtime=nvidia",
         "--net=host",
         "--privileged",
         "-e", "DISPLAY=${localEnv:DISPLAY}", 

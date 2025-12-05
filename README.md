@@ -63,6 +63,7 @@ rosdep install --from-paths src --ignore-src -r -y
 
 xacro src/robot_description/urdf/robot.xacro > src/robot_description/urdf/robot.urdf
 
+xhost +local:root   ===>   at local terminal, and just do it once
 
 ```
 https://github.com/chvmp/champ/tree/ros2
