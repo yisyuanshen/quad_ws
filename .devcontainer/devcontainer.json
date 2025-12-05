@@ -4,13 +4,14 @@
         "dockerfile": "Dockerfile"
     },
     "runArgs": [
-        // Comment gpu and nvidia arg under arm64 environment
+        // Comment gpu and nvidia args under arm64 environment
         // "--gpus", "all",
         // "--runtime=nvidia",
+        // Comment display args under macOS environment
+        // "-e", "DISPLAY=${localEnv:DISPLAY}",
+        // "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
         "--net=host",
-        "--privileged",
-        "-e", "DISPLAY=${localEnv:DISPLAY}", 
-        "-v", "/tmp/.X11-unix:/tmp/.X11-unix"
+        "--privileged"
     ],
     "customizations": {
         "vscode": {
@@ -22,6 +23,13 @@
             ]
         }
     },
+    
+    "features": {
+        "ghcr.io/devcontainers/features/desktop-lite:1": {
+            "version": "latest"
+        }
+    },
+    "forwardPorts": [6080],
 
     "postCreateCommand": "sudo apt-get update && rosdep update && rosdep install --from-paths src --ignore-src -y",
 
