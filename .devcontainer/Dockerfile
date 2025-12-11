@@ -23,9 +23,9 @@ RUN apt-get update && apt-get install -y \
     ros-humble-ros2-controllers \
     ros-humble-robot-localization \
     ### Change gazebo to gz under arm64 environment
-    ros-humble-ros-gz \
-    # ros-humble-gazebo-ros-pkgs \
-    # ros-humble-gazebo-ros2-control \
+    # ros-humble-ros-gz \
+    ros-humble-gazebo-ros-pkgs \
+    ros-humble-gazebo-ros2-control \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/requirements.txt

@@ -5,11 +5,11 @@
     },
     "runArgs": [
         // Comment gpu and nvidia args under arm64 environment
-        // "--gpus", "all",
-        // "--runtime=nvidia",
+        "--gpus", "all",
+        "--runtime=nvidia",
         // Comment display args under macOS environment
-        // "-e", "DISPLAY=${localEnv:DISPLAY}",
-        // "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
+        "-e", "DISPLAY=${localEnv:DISPLAY}",
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
         "--net=host",
         "--privileged"
     ],
